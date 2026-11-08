@@ -1,0 +1,344 @@
+{
+  "created_utc": "2026-10-30T11:41:34+00:00",
+  "data_file": "data/email-Eu-core-temporal.txt.gz",
+  "dataset_name": "email-Eu-core-temporal.txt.gz",
+  "is_snap_dataset": true,
+  "n_interactions": 332334,
+  "n_self_loops_dropped": 0,
+  "exact_duplicate_rows": 4998,
+  "timestamp_unit": "seconds since collection start (relative, not Unix time)",
+  "timestamp_min": 0,
+  "timestamp_max": 69459254,
+  "observed_time_span_days": 803.9265509259259,
+  "n_nodes": 986,
+  "n_snapshots": 5,
+  "node_id_min": 0,
+  "node_id_max": 1004,
+  "node_ids_contiguous": false,
+  "n_empty_snapshots": 0,
+  "time_span_days": 803.9265625,
+  "window_days": 160.7853125,
+  "n_node_features": 12,
+  "config": {
+    "interval": "equal",
+    "snapshot_count": 5,
+    "snapshot_boundaries_days": null,
+    "edge_mode": "binary",
+    "data_file": null,
+    "output_dir": ".",
+    "skip_quantum": false,
+    "quantum_samples": 60,
+    "seed": 7,
+    "log_transform": true,
+    "graph_representation": "combined",
+    "n_components": 4,
+    "graph_component_sweep": [
+      2,
+      5,
+      10,
+      20,
+      30,
+      50
+    ],
+    "quantum_reps": 1,
+    "quantum_entanglement": "linear",
+    "subset_nodes": 15,
+    "adjacency_nodes": 40
+  },
+  "sample_size_used": 60,
+  "graph_matrix_nodes": 986,
+  "graph_matrix_representation": "combined",
+  "graph_matrix_method": "centered PCA on full-node adjacency, directed Laplacian, and normalized combined matrices",
+  "graph_matrix_files": [
+    "01_temporal_graph/global_adjacency_matrix.npz",
+    "01_temporal_graph/global_directed_out_laplacian_matrix.npz"
+  ],
+  "organized_results": {
+    "temporal_graph": "results/01_temporal_graph/",
+    "feature_pca": "results/02_feature_pca/",
+    "quantum_kernel_pca": "results/03_quantum_kernel_pca/",
+    "graph_matrix_pca": "results/04_graph_matrix_pca/",
+    "classical_quantum_comparison": "results/05_classical_quantum_comparison/",
+    "run_metadata": "results/run_metadata.json"
+  },
+  "full_temporal_feature_covariance_matrix": "02_feature_pca/full_node_temporal/full_temporal_feature_covariance_matrix.csv",
+  "graph_matrix_metrics": [
+    {
+      "representation": "adjacency",
+      "number_of_components": 4,
+      "cumulative_explained_variance": 0.2290091890520421,
+      "relative_reconstruction_error": 0.878060824173335,
+      "runtime_seconds": 0.17040789997554384,
+      "matrix_rows": 986,
+      "matrix_columns": 986,
+      "matrix_nnz": 24929,
+      "PC1_eigenvalue": 2.8313835481960687,
+      "PC1_explained_variance_ratio": 0.11859732975187444,
+      "PC1_cumulative_variance_ratio": 0.11859732975187444,
+      "PC2_eigenvalue": 1.06233083534331,
+      "PC2_explained_variance_ratio": 0.0444975391854153,
+      "PC2_cumulative_variance_ratio": 0.16309486893728975,
+      "PC3_eigenvalue": 0.8280554254923184,
+      "PC3_explained_variance_ratio": 0.03468451401171334,
+      "PC3_cumulative_variance_ratio": 0.1977793829490031,
+      "PC4_eigenvalue": 0.7455779940281516,
+      "PC4_explained_variance_ratio": 0.031229806103038986,
+      "PC4_cumulative_variance_ratio": 0.2290091890520421
+    },
+    {
+      "representation": "laplacian",
+      "number_of_components": 4,
+      "cumulative_explained_variance": 0.14543617592061087,
+      "relative_reconstruction_error": 0.924426213431554,
+      "runtime_seconds": 0.21118909999495372,
+      "matrix_rows": 986,
+      "matrix_columns": 986,
+      "matrix_nnz": 25753,
+      "PC1_eigenvalue": 113.14877500693198,
+      "PC1_explained_variance_ratio": 0.06384178062077961,
+      "PC1_cumulative_variance_ratio": 0.06384178062077961,
+      "PC2_eigenvalue": 52.26178971753112,
+      "PC2_explained_variance_ratio": 0.029487599081753472,
+      "PC2_cumulative_variance_ratio": 0.09332937970253308,
+      "PC3_eigenvalue": 50.01325216456923,
+      "PC3_explained_variance_ratio": 0.028218909772788497,
+      "PC3_cumulative_variance_ratio": 0.12154828947532158,
+      "PC4_eigenvalue": 42.337244708826724,
+      "PC4_explained_variance_ratio": 0.02388788644528929,
+      "PC4_cumulative_variance_ratio": 0.14543617592061087
+    },
+    {
+      "representation": "combined",
+      "number_of_components": 4,
+      "cumulative_explained_variance": 0.13862543998087307,
+      "relative_reconstruction_error": 0.9281026667449728,
+      "runtime_seconds": 0.26329429997713305,
+      "matrix_rows": 986,
+      "matrix_columns": 1972,
+      "matrix_nnz": 50682,
+      "PC1_eigenvalue": 0.0001237494796260209,
+      "PC1_explained_variance_ratio": 0.06272763496320552,
+      "PC1_cumulative_variance_ratio": 0.06272763496320552,
+      "PC2_eigenvalue": 6.902901072313602e-05,
+      "PC2_explained_variance_ratio": 0.0349902609659265,
+      "PC2_cumulative_variance_ratio": 0.09771789592913202,
+      "PC3_eigenvalue": 4.475775945979851e-05,
+      "PC3_explained_variance_ratio": 0.0226873551763595,
+      "PC3_cumulative_variance_ratio": 0.12040525110549152,
+      "PC4_eigenvalue": 3.5944905197507527e-05,
+      "PC4_explained_variance_ratio": 0.018220188875381543,
+      "PC4_cumulative_variance_ratio": 0.13862543998087307
+    }
+  ],
+  "graph_matrix_reconstruction_sweep": [
+    {
+      "representation": "adjacency",
+      "n_components": 2,
+      "cumulative_explained_variance_ratio": 0.16309486893728975,
+      "relative_reconstruction_error": 0.9148251915326273
+    },
+    {
+      "representation": "adjacency",
+      "n_components": 5,
+      "cumulative_explained_variance_ratio": 0.25525525541069083,
+      "relative_reconstruction_error": 0.8629859469245762
+    },
+    {
+      "representation": "adjacency",
+      "n_components": 10,
+      "cumulative_explained_variance_ratio": 0.3421055762193737,
+      "relative_reconstruction_error": 0.8111069126697324
+    },
+    {
+      "representation": "adjacency",
+      "n_components": 20,
+      "cumulative_explained_variance_ratio": 0.4372870859412918,
+      "relative_reconstruction_error": 0.7501419292765246
+    },
+    {
+      "representation": "adjacency",
+      "n_components": 30,
+      "cumulative_explained_variance_ratio": 0.4974854725578921,
+      "relative_reconstruction_error": 0.7088825907314316
+    },
+    {
+      "representation": "adjacency",
+      "n_components": 50,
+      "cumulative_explained_variance_ratio": 0.5869376127896225,
+      "relative_reconstruction_error": 0.6426992976582259
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 2,
+      "cumulative_explained_variance_ratio": 0.09332937970253308,
+      "relative_reconstruction_error": 0.952192533208216
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 5,
+      "cumulative_explained_variance_ratio": 0.1687768609751415,
+      "relative_reconstruction_error": 0.9117143955345173
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 10,
+      "cumulative_explained_variance_ratio": 0.2498150901967363,
+      "relative_reconstruction_error": 0.8661321549297624
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 20,
+      "cumulative_explained_variance_ratio": 0.3519407787126689,
+      "relative_reconstruction_error": 0.8050212551773654
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 30,
+      "cumulative_explained_variance_ratio": 0.4322084229940621,
+      "relative_reconstruction_error": 0.7535194602702346
+    },
+    {
+      "representation": "laplacian",
+      "n_components": 50,
+      "cumulative_explained_variance_ratio": 0.5536873820107273,
+      "relative_reconstruction_error": 0.6680663275373778
+    },
+    {
+      "representation": "combined",
+      "n_components": 2,
+      "cumulative_explained_variance_ratio": 0.09771789592913202,
+      "relative_reconstruction_error": 0.9498853110091086
+    },
+    {
+      "representation": "combined",
+      "n_components": 5,
+      "cumulative_explained_variance_ratio": 0.155596428693398,
+      "relative_reconstruction_error": 0.9189143438354881
+    },
+    {
+      "representation": "combined",
+      "n_components": 10,
+      "cumulative_explained_variance_ratio": 0.23114452048726689,
+      "relative_reconstruction_error": 0.8768440451487001
+    },
+    {
+      "representation": "combined",
+      "n_components": 20,
+      "cumulative_explained_variance_ratio": 0.32797798821488655,
+      "relative_reconstruction_error": 0.8197694869810144
+    },
+    {
+      "representation": "combined",
+      "n_components": 30,
+      "cumulative_explained_variance_ratio": 0.3957023692411143,
+      "relative_reconstruction_error": 0.7773658281394207
+    },
+    {
+      "representation": "combined",
+      "n_components": 50,
+      "cumulative_explained_variance_ratio": 0.5015404926441143,
+      "relative_reconstruction_error": 0.7060166480727541
+    }
+  ],
+  "graph_matrix_runtime_seconds": {
+    "adjacency": 0.17040789997554384,
+    "laplacian": 0.21118909999495372,
+    "combined": 0.26329429997713305
+  },
+  "graph_matrix_pca_explained_variance_ratio": {
+    "adjacency": [
+      0.11859732975187444,
+      0.0444975391854153,
+      0.03468451401171334,
+      0.031229806103038986
+    ],
+    "laplacian": [
+      0.06384178062077961,
+      0.029487599081753472,
+      0.028218909772788497,
+      0.02388788644528929
+    ],
+    "combined": [
+      0.06272763496320552,
+      0.0349902609659265,
+      0.0226873551763595,
+      0.018220188875381543
+    ]
+  },
+  "graph_matrix_pca_cumulative_explained_variance": {
+    "adjacency": 0.2290091890520421,
+    "laplacian": 0.14543617592061087,
+    "combined": 0.13862543998087307
+  },
+  "graph_matrix_reconstruction_error": {
+    "adjacency": 0.878060824173335,
+    "laplacian": 0.924426213431554,
+    "combined": 0.9281026667449728
+  },
+  "graph_matrix_density": 0.025667981178118016,
+  "graph_matrix_edges": 24929,
+  "snapshot_feature_pca_variance_ratio": [
+    0.9683190030746476,
+    0.025692027182758828,
+    0.004276499677394802,
+    0.0017124700651987691
+  ],
+  "quantum_runtime_seconds": 1.7970185999874957,
+  "classical_full_node_temporal_feature_pca_runtime_seconds": 0.00055109997629188,
+  "classical_sample_matched_pca_runtime_seconds": 0.00028799998108297586,
+  "snapshot_feature_pca_runtime_seconds": 0.013856900011887774,
+  "sample_selection": "uniform random without replacement among nodes with any activity; np.random.default_rng(seed); indices sorted",
+  "comparison_features": [
+    "mean_out_degree",
+    "mean_in_degree"
+  ],
+  "full_pca_variance_ratio": [
+    0.8119796906668486,
+    0.0591985842158642,
+    0.041110374179663525,
+    0.034182734220078594
+  ],
+  "sample_pca_variance_ratio": [
+    0.9215653883965548,
+    0.0784346116034453
+  ],
+  "quantum_status": "completed",
+  "quantum_eigenvalue_fraction_top2": [
+    0.2434564552578903,
+    0.20334372289812908
+  ],
+  "comparison_metrics": {
+    "distance_rank_correlation": 0.1411558015597666,
+    "abs_spearman_pc1": 0.1994830911624291,
+    "abs_spearman_pc2": 0.1718009663377205,
+    "quantum_kernel_pca_runtime_seconds": 1.7970185999874957
+  },
+  "busiest_snapshot": "T03",
+  "visualization_subset": "top-degree nodes in busiest snapshot (biased toward hubs)",
+  "versions": {
+    "python": "3.13.4",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "qiskit": "2.5.2"
+  },
+  "install_hint_quantum": "pip install qiskit qiskit-aer",
+  "figures": [
+    "01_edges_over_time.png",
+    "02_density_over_time.png",
+    "03_active_senders_receivers.png",
+    "04_mean_degrees.png",
+    "05_classical_pca_full.png",
+    "06_classical_pca_sample.png",
+    "07_quantum_kernel_pca.png",
+    "08_adjacency_subset.png",
+    "09_directed_graph_subset.png",
+    "10_laplacian_subset.png",
+    "11_comparison_side_by_side.png",
+    "12_clustering_coefficient.png",
+    "adjacency_embedding.png",
+    "combined_embedding.png",
+    "graph_matrix_reconstruction_sweep.png",
+    "laplacian_embedding.png",
+    "snapshot_feature_pca.png"
+  ]
+}

@@ -1,0 +1,32 @@
+# Requirements coverage
+
+This checklist uses the supplied project report and expanded implementation brief as the baseline. Evidence refers to the latest real SNAP run on 16 October 2026.
+
+| Requirement | Implementation | Evidence | Status and limitation |
+|---|---|---|---|
+| Use the real SNAP temporal email dataset | src/temporal_graph.py parses the supplied compressed file | results/run_metadata.json; data/email-Eu-core-temporal.txt.gz | Complete: 986 nodes, 332,334 rows, 803.9266 elapsed days |
+| Verify time units, boundaries, IDs, duplicate rows, loops, missing data, and direction | Parser validates numeric integer rows; timestamps are relative seconds; sorted global node map; duplicates counted; loops dropped from graph matrices; A[sender, receiver] | results/run_metadata.json; results/01_temporal_graph/node_id_to_matrix_index.csv | Complete: original IDs are 0–1004 with gaps (986 unique IDs); 4,998 exact repeated rows and zero self-loops |
+| Keep all nodes in a stable order in every snapshot | Mapping comes from every dataset row and sizes every sparse matrix | results/01_temporal_graph/snapshot_graph_statistics.csv; results/04_graph_matrix_pca/*_matrix_pca_scores.csv | Complete: each snapshot is 986 × 986 |
+| Build sparse directed adjacency and outgoing Laplacian | SciPy CSR A, D_out from row sums, L_out = D_out − A and validation | src/temporal_graph.py; results/01_temporal_graph/global_adjacency_matrix.npz; results/01_temporal_graph/global_directed_out_laplacian_matrix.npz | Complete; binary default, count mode available |
+| Use adjacency and Laplacian in dimensionality reduction | src/graph_embedding.py applies centered PCA separately to A, L_out, and normalized [A,L_out] | results/04_graph_matrix_pca/*_matrix_pca_scores.csv; results/04_graph_matrix_pca/graph_matrix_pca_metrics.csv | Complete; nodes are observations and links are features; first two PCs explain 16.3%, 9.3%, and 9.8%, respectively |
+| Analyze five chronological non-overlapping snapshots | Equal intervals default to five; custom elapsed-day boundaries configurable; weekly and fixed 30-day modes optional | results/01_temporal_graph/snapshot_graph_statistics.csv; src/project_config.py; run_project.py | Complete: five intervals cover 0–803.9266 days; none is empty |
+| Calculate graph statistics and directed clustering | Edge count, density, active nodes, in/out degree, isolates, NetworkX directed Fagiolo clustering | results/01_temporal_graph/snapshot_graph_features.csv; figures/12_clustering_coefficient.png | Complete; zero-clustering nodes count as zero; empty graph reports zero |
+| Distinguish temporal feature PCA from graph-matrix reduction | Standardized centered PCA on degree histories; separate snapshot-level PCA; separate graph-matrix PCA | results/02_feature_pca/full_node_temporal/; results/02_feature_pca/snapshot_level/; results/04_graph_matrix_pca/ | Complete; temporal PCA uses degree histories while graph-matrix PCA uses node-to-node connection values |
+| Evaluate quantum method honestly on a matched sample | Qiskit ZZFeatureMap fidelity kernel; 60 active nodes and same two logged mean-degree features; runtime and distance-rank correlation recorded | results/03_quantum_kernel_pca/; results/05_classical_quantum_comparison/; results/run_metadata.json | Complete; quantum-kernel PCA ran in classical simulation; no advantage claim |
+| Provide beginner-friendly settings, guide, and viva support | Central defaults and requested guides | src/project_config.py; docs/CODE_GUIDE.md; docs/VIVA_NOTES.md | Complete |
+| Save real figures, tables, matrices, metrics, and execution summary | Pipeline writes PNG, CSV, NPZ, JSON outputs | figures/; results/ | Complete; network/matrix illustrations may use labeled subsets, while analysis uses every mapped node |
+| Create a presentation based on the executed outputs | 15-slide editable review deck includes actual plots, metrics, speaker notes, feature/PC explanations, contribution and conclusion | Hybrid_Classical_Quantum_PCA_Improved_Final.pptx; make_presentation.py | Complete; generated from current results and all 15 slides imported/rendered with Artifact Tool |
+| Answer the professor's quantum-method question precisely | Two-feature, two-qubit ZZFeatureMap; Qiskit Statevector fidelity kernel; classical centring/eigen-decomposition | src/quantum_kpca.py; slides 9–10; docs/VIVA_NOTES.md | Complete; no hardware or quantum-advantage claim |
+| Explain PCs, actual results, loadings/scores, and observed scatter | Standardised temporal node PCA and saved loadings/scores | results/02_feature_pca/full_node_temporal/full_temporal_pca_variance.csv; results/02_feature_pca/full_node_temporal/full_temporal_pca_loadings.csv; figures/05_classical_pca_full.png; slide 8 | Complete: PC1 81.2%, PC2 5.9%, cumulative 87.1% |
+| Explain exact features, sample selection, and scaling | Full 2T+2 node features; sample's two summary features and active-node filter; log1p and min-max quantum scaling | src/features.py; src/pipeline.py; slide 7 | Complete: 986 × 12 full PCA; 60 sample nodes |
+| Separate project capability from personal contribution and show review progress | Project-level scope plus editable personal statement; review evidence slide marks missing labelled Review 1/2 feedback | slide 2, slide 14; docs/PRESENTATION_REVISION_REPORT.md | Complete; no prior-review comments invented |
+| Provide viva preparation and safe live code changes | Separate guide with file/function/argument, expected effect and test method | docs/CODE_GUIDE.md; docs/VIVA_NOTES.md | Complete; integrated pipeline caveat documented for >2 components |
+| Test core math and run the real pipeline | Tests cover parsing, direction, boundaries, Laplacian, features, embeddings, quantum, and pipeline | tests/; results/run_metadata.json | Complete: 37 tests passed; real quantum experiment completed |
+
+## Interpretation limits
+
+- The whole 986-node dataset is used. An early report review proposed a smaller department, but the supplied whole-network file is present and the expanded task asks for all 986 nodes.
+- The combined matrix has 986 rows and 1,972 columns. Each output embedding still has one row per node.
+- Frobenius-energy retention comes from randomized singular values. It measures low-rank matrix reconstruction, not centered-PCA variance.
+- The quantum comparison uses a 60-node sample and two features. Statevectors and kernel eigendecomposition ran on a classical CPU.
+- Runtime values vary with machine load and software versions.

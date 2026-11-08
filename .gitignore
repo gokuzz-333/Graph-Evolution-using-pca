@@ -1,0 +1,16 @@
+# Python environments and caches
+.venv/
+__pycache__/
+.pytest_cache/
+.codex_build/
+.chart-data*/
+.render*/
+
+# Downloaded raw dataset; the project can download it when needed
+data/
+
+# Local presentation and submission artifacts
+*.pptx
+*.pdf
+*.docx
+~$*
